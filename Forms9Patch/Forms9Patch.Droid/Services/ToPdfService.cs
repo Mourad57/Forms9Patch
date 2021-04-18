@@ -62,8 +62,8 @@ namespace Forms9Patch.Droid
 
                 //webView.Layout(0, 0, (int)((size.Width - 0.5) * 72), (int)((size.Height - 0.5) * 72));
                 webView.Layout(0, 0, (int)System.Math.Ceiling(pageSize.Width), (int)System.Math.Ceiling(pageSize.Height));
-
-                webView.LoadData(html, "text/html; charset=utf-8", "UTF-8");
+                String base64version = Base64.encodeToString(html.getBytes(), Base64.DEFAULT);
+                webView.LoadData(base64version, "text/html; charset=utf-8", "base64");
                 webView.SetWebViewClient(new WebViewCallBack(taskCompletionSource, fileName, pageSize, margin, OnPageFinished));
             //}
         }
